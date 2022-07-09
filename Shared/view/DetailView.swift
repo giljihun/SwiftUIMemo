@@ -14,6 +14,10 @@ struct DetailView: View {
     
     @State private var showComposer = false
     
+    @State private var showDeleteAlert = false
+    
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         VStack{
             ScrollView {
@@ -36,6 +40,26 @@ struct DetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
+                
+                Button {
+                    showDeleteAlert = true
+                } label: {
+                    Image(systemName: "trash")
+                }
+                .foregroundColor(.red)
+                .alert("Warning", isPresented: $showDeleteAlert) {
+                    Button(role: .destructive) {
+                        store.delete(memo: memo)
+                        dismiss()
+                    } label: {
+                        Text("Delete")
+                    }
+
+                } message: {
+                    Text("걍 삭제해버릴까요?")
+                }
+
+                
                 Button {
                     showComposer = true
                 } label: {
