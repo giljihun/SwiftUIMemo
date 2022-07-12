@@ -10,7 +10,7 @@ import SwiftUI
 struct ComposeView: View {
     @EnvironmentObject var store: MemoStore
     
-    var memo: Memo? = nil
+    var memo: Memo? = nil /* */
     
     @Environment(\.dismiss) var dismiss
     
@@ -19,13 +19,26 @@ struct ComposeView: View {
     var body: some View {
         NavigationView {
             VStack {
+                TextField(" Title...", text: $content)
+                    .padding(15)
+                    .background()
+                    .cornerRadius(15)
+                    
                 TextEditor(text: $content)
-                    .padding()
                     .onAppear {
                         if let memo = memo {
                             content = memo.content
                         }
                     }
+                    .cornerRadius(15)
+                    .padding(15)
+                    .background(.cyan)
+                    
+                Image("Go2")
+                    .resizable()
+                    
+                    
+                    
             }
             .navigationTitle(memo != nil ? "Editing Memo" : " NEW Memo ")
             .navigationBarTitleDisplayMode(.inline)
@@ -55,6 +68,7 @@ struct ComposeView: View {
                     }
                 }
             }
+                
         }
     }
 }

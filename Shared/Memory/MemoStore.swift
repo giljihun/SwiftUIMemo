@@ -6,17 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 class MemoStore: ObservableObject {
     @Published var list: [Memo]
     /* 배열을 published로 선언하면 배열을 업데이트 할때마다 바인딩되어있는 뷰도 자동 업데이트됨*/
     
     init() {
-        list = [
-            Memo(content: "Hello", insertDate: Date.now),
-            Memo(content: "Awesome", insertDate: Date.now.addingTimeInterval(3600 * -24)),
-            Memo(content: "SwiftUI", insertDate: Date.now.addingTimeInterval(3600 * -48))
-        ]
+        list = []
     }
     
     func insert(memo: String) {
@@ -41,4 +38,5 @@ class MemoStore: ObservableObject {
             list.remove(at: index)
         }
     }
+    
 }
