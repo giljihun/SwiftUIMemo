@@ -16,16 +16,16 @@ class MemoStore: ObservableObject {
         list = []
     }
     
-    func insert(memo: String) {
-        list.insert(Memo(content: memo), at: 0)
+    func insert(memo: Memo?, Title: String, content: String) {
+        list.insert(Memo(Title: Title , content: content), at: 0)
         /*새로운 메모를 항상 0번 인덱스에 추가함으로써 가장 먼저 표시되는 기능!*/
     }
     
-    func update(memo: Memo?, content: String) {
+    func update(memo: Memo?, Title: String, content: String) {
         guard let memo = memo else {
             return
         }
-        
+        memo.Title = Title
         memo.content = content
     }
     

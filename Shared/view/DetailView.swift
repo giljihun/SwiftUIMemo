@@ -36,7 +36,7 @@ struct DetailView: View {
                 }
             }
         }
-        .navigationTitle("Looking Memo")
+        .navigationTitle("Look")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
@@ -77,7 +77,7 @@ struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         
         NavigationView {
-            DetailView(memo: Memo(content: "Hello"))
+            DetailView(memo: Memo(Title: "", content: "Hello"))
                 .environmentObject(MemoStore())
         }
     }

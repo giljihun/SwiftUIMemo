@@ -15,14 +15,21 @@ struct ComposeView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var content: String = ""
+    @State private var Title: String = ""
     
     var body: some View {
         NavigationView {
             VStack {
-                TextField(" Title...", text: $content)
-                    .padding(15)
+                TextField("   Title . . . ", text: $Title)
+                    .onAppear {
+                        if let memo = memo {
+                            Title = memo.Title
+                        }
+                    }
+                    .padding(10)
                     .background()
                     .cornerRadius(15)
+                    .background(.bar)
                     
                 TextEditor(text: $content)
                     .onAppear {
@@ -32,11 +39,7 @@ struct ComposeView: View {
                     }
                     .cornerRadius(15)
                     .padding(15)
-                    .background(.cyan)
-                    
-                Image("Go2")
-                    .resizable()
-                    
+                    .background(.bar)
                     
                     
             }
@@ -57,9 +60,9 @@ struct ComposeView: View {
                     Button {
                         
                         if let memo = memo {
-                            store.update(memo: memo, content: content)
+                            store.update(memo: memo, Title: Title, content: content)
                         } else {
-                            store.insert(memo: content)
+                            store.insert(memo: memo, Title: Title, content: content)
                         }
                         
                         dismiss()

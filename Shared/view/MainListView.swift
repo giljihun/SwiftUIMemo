@@ -15,7 +15,6 @@ struct MainListView: View {
         
         NavigationView {
                 List {
-                    
                     ForEach(store.list) { memo in
                         NavigationLink {
                             DetailView(memo: memo)
@@ -38,7 +37,7 @@ struct MainListView: View {
                 }
                 
                 .sheet(isPresented: $showComposer) { ComposeView()
-            }
+                }
         }
 }
 
