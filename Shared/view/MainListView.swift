@@ -26,7 +26,7 @@ struct MainListView: View {
                             .onDelete(perform: store.delete)
                         }
                     .listStyle(.plain)
-                    .navigationTitle("My Memo")
+                    .navigationTitle("My Epiphanies!")
                     .toolbar {
                         Button{
                             showComposer = true
