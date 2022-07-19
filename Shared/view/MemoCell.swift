@@ -13,11 +13,27 @@ struct MemoCell: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(memo.Title)
+                .bold()
                 .font(.body)
                 .lineLimit(1)
-            Text(memo.insertDate, style: .date)
-                .font(.caption)
+                .frame(width: 150, alignment: .leading)
+                .allowsTightening(true)
+                
+                
+                
+            HStack {
+                Text(memo.insertDate, style: .date)
+                    .font(.caption)
                 .foregroundColor(.secondary)
+                Text(Image(systemName: "star.fill"))
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
+                Text(Date(), style: .time)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
         }
     }
 }
