@@ -14,11 +14,10 @@ struct MemoCell: View {
         VStack(alignment: .leading) {
             Text(memo.Title)
                 .bold()
-                .font(.body)
+                .font(.title3)
                 .lineLimit(1)
                 .frame(width: 150, alignment: .leading)
                 .allowsTightening(true)
-                
                 
                 
             HStack {
