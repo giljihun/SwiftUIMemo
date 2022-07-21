@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 class Memo: Identifiable, ObservableObject {
     /*idetifiable -> 데이터를 리스트에 쉽게 바인딩하기 위해 필요,  observableobject -> 메모를 편집할 때 뷰를 자동으로 업데이트하기 위해 필요*/
     let id: UUID

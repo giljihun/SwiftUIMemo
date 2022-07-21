@@ -57,6 +57,7 @@ struct ComposeView: View {
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing)
                 {
+                    
                     Button {
                         
                         if let memo = memo {
