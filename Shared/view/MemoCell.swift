@@ -42,3 +42,6 @@ struct MemoCell_Previews: PreviewProvider {
         MemoCell(memo: Memo(Title: "Test", content: "123"))
     }
 }
+
+
+
