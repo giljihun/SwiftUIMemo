@@ -52,11 +52,11 @@ class CoreDataManager: ObservableObject {
         saveContext()
     }
     
-    @FetchRequest(sortDescriptors: [SortDescriptor(\MemoEntity.insertDate, order: .reverse)])
-    var memoList: FetchedResults<MemoEntity>
+
     
     func update(memo: MemoEntity?, content: String, Title: String) {
         memo?.content = content
+        memo?.title = Title
         saveContext()
     }
     func delete(memo: MemoEntity?) {

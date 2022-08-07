@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct MainListView: View {
-    @EnvironmentObject var store: MemoStore
+    @EnvironmentObject var manager: CoreDataManager
     @State private var showComposer: Bool = false
-
+    @FetchRequest(sortDescriptors: [SortDescriptor(\MemoEntity.insertDate, order: .reverse)]) //fechrequest 특성은 항상 뷰 안에서 실행해야된다.
+    var memoList: FetchedResults<MemoEntity>
     
     var body: some View {
         
         NavigationView {
                     List {
-                            ForEach(store.list) { memo in
+                            ForEach(memoList) { memo in
                                 NavigationLink {
                                     DetailView(memo: memo)
                                 } label: {
                                     MemoCell(memo: memo)
                                 }
                             }
-                            .onDelete(perform: store.delete)
+                            .onDelete(perform: delete)
                         }
                     .listStyle(.plain)
                     .navigationTitle("My Epiphanies!")
@@ -41,12 +42,20 @@ struct MainListView: View {
                 }
             }
         }
+    
+    func delete(set: IndexSet){
+        for index in set {
+            manager.delete(memo: memoList[index])
+        }
     }
+}
 
 struct MainListView_Previews: PreviewProvider {
     static var previews: some View {
         MainListView()
-            .environmentObject(MemoStore())
+            .environmentObject(CoreDataManager.shared)
+            .environment(\.managedObjectContext,
+                          CoreDataManager.shared.mainContext)
     }
 }
 

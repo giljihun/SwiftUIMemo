@@ -17,7 +17,7 @@ class MemoStore: ObservableObject {
     }
     
     func insert(memo: Memo?, Title: String, content: String) {
-        list.insert(Memo(Title: Title , content: content), at: 0)
+        list.insert(Memo(Title: Title , Content: content), at: 0)
         /*새로운 메모를 항상 0번 인덱스에 추가함으로써 가장 먼저 표시되는 기능!*/
     }
     
@@ -26,7 +26,7 @@ class MemoStore: ObservableObject {
             return
         }
         memo.Title = Title
-        memo.content = content
+        memo.Content = content
     }
     
     func delete(memo: Memo){

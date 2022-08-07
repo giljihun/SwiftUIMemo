@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct ComposeView: View {
-    @EnvironmentObject var store: MemoStore
+    @EnvironmentObject var manager: CoreDataManager
     
-    var memo: Memo? = nil /* */
+    var memo: MemoEntity? = nil
     
     @Environment(\.dismiss) var dismiss
     
     @State private var content: String = ""
-    @State private var Title: String = ""
+    @State private var title: String = ""
     
     var body: some View {
         NavigationView {
             VStack {
-                TextField("   Title . . . ", text: $Title)
+                TextField("   Title . . . ", text: $title)
                     .onAppear {
-                        if let memo = memo {
-                            Title = memo.Title
+                        if let memo = memo?.title {
+                            title = memo
                         }
                     }
                     .padding(10)
@@ -33,8 +33,8 @@ struct ComposeView: View {
                     
                 TextEditor(text: $content)
                     .onAppear {
-                        if let memo = memo {
-                            content = memo.content
+                        if let memo = memo?.content {
+                            content = memo
                         }
                     }
                     .cornerRadius(15)
@@ -61,9 +61,9 @@ struct ComposeView: View {
                     Button {
                         
                         if let memo = memo {
-                            store.update(memo: memo, Title: Title, content: content)
+                            manager.update(memo: memo, content: content, Title: title)
                         } else {
-                            store.insert(memo: memo, Title: Title, content: content)
+                            manager.addMemo(content: content, Title: title)
                         }
                         
                         dismiss()

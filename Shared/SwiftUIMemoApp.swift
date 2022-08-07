@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct SwiftUIMemoApp: App {
-    @StateObject var store = MemoStore()
     let manager = CoreDataManager.shared
 
 
@@ -17,7 +16,7 @@ struct SwiftUIMemoApp: App {
         WindowGroup {
             MainListView()
                 .environment(\.managedObjectContext, manager.mainContext)
-                .environmentObject(store)
+                .environmentObject(manager)
         }
     }
 }
