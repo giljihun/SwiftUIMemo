@@ -10,7 +10,7 @@ import SwiftUI
 struct MainListView: View {
     @EnvironmentObject var store: MemoStore
     @State private var showComposer: Bool = false
-    
+
     
     var body: some View {
         
