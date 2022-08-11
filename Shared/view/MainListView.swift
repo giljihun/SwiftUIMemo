@@ -26,8 +26,19 @@ struct MainListView: View {
                             }
                             .onDelete(perform: delete)
                         }
-                    .listStyle(.plain)
-                    .navigationTitle("My Epiphanies!")
+                    .listStyle(PlainListStyle())
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            VStack {
+                                Text("   MEMOBICOM")
+                                    .font(.custom("Copperplate", size: 30))
+                                    .padding(.leading)
+                                    .frame(width: 500, height: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+                            }
+                        }
+                    }
+                    
                     .toolbar {
                         Button{
                             showComposer = true

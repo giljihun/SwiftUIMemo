@@ -14,7 +14,7 @@ struct MemoCell: View {
         VStack(alignment: .leading) {
             Text(memo.title ?? "")
                 .bold()
-                .font(.title3)
+                .font(.subheadline)
                 .lineLimit(1)
                 .frame(width: 150, alignment: .leading)
                 .allowsTightening(true)
