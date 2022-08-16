@@ -13,6 +13,9 @@ struct MainListView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\MemoEntity.insertDate, order: .reverse)]) //fechrequest 특성은 항상 뷰 안에서 실행해야된다.
     var memoList: FetchedResults<MemoEntity>
     
+    @State private var keyword = ""
+    
+    
     var body: some View {
         
         NavigationView {
@@ -40,17 +43,29 @@ struct MainListView: View {
                     }
                     
                     .toolbar {
-                        Button{
-                            showComposer = true
-                        }label: {
-                            Image(systemName: "plus")
-                                .resizable()
-                                .frame(width: 20, height: 20)
+                            Button{
+                                showComposer = true
+                            }label: {
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
                         }
+                        
                     }
                     .sheet(isPresented: $showComposer) {
                         ComposeView()
                 }
+                    .searchable(text: $keyword, prompt: "Search")
+                    .onChange(of: keyword) { newValue in
+                        if keyword.isEmpty {
+                            memoList.nsPredicate = nil
+                        } else {
+                            memoList.nsPredicate = NSPredicate(format:
+                                "title CONTAINS[c] %@", newValue)
+                            memoList.nsPredicate = NSPredicate(format:
+                                "content CONTAINS[c] %@", newValue)
+                        }
+                    }
             }
         }
     
