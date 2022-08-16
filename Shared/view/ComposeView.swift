@@ -16,6 +16,7 @@ struct ComposeView: View {
     
     @State private var content: String = ""
     @State private var title: String = ""
+    @State private var insertDate: Date = .now
     
     var body: some View {
         NavigationView {
@@ -61,9 +62,9 @@ struct ComposeView: View {
                     Button {
                         
                         if let memo = memo {
-                            manager.update(memo: memo, content: content, Title: title)
+                            manager.update(memo: memo, content: content, Title: title, insertDate: insertDate)
                         } else {
-                            manager.addMemo(content: content, Title: title)
+                            manager.addMemo(content: content, Title: title, insertDate: insertDate)
                         }
                         
                         dismiss()

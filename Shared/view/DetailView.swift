@@ -28,10 +28,15 @@ struct DetailView: View {
                         Spacer(minLength: 0)
                     }
                     
-                    Text(memo.insertDate ?? .now, style: .date)
-                        .padding()
-                        .font(.footnote)
+                    HStack {
+                        Text(memo.insertDate ?? .now, style: .date)
+                            .font(.footnote)
                         .foregroundColor(.secondary)
+                        Text(memo.insertDate ?? .now, style: .time)
+                            .font(.footnote)
+                        .foregroundColor(.secondary)
+                    }
+                    
                 }
             }
         }

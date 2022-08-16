@@ -23,12 +23,8 @@ struct MemoCell: View {
             HStack {
                 Text(memo.insertDate ?? .now, style: .date)
                     .font(.caption)
-                .foregroundColor(.secondary)
-                Text(Image(systemName: "star.fill"))
-                    .font(.caption)
                     .foregroundColor(.secondary)
-                
-                Text(Date(), style: .time)
+                Text(memo.insertDate ?? .now, style: .time)
                     .font(.caption)
                     .foregroundColor(.secondary)
             }

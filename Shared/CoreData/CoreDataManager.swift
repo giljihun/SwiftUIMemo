@@ -43,7 +43,7 @@ class CoreDataManager: ObservableObject {
     }
     
     
-    func addMemo(content: String, Title: String) {
+    func addMemo(content: String, Title: String, insertDate: Date) {
         let newMemo = MemoEntity(context: mainContext)
         newMemo.content = content
         newMemo.title = Title
@@ -54,9 +54,10 @@ class CoreDataManager: ObservableObject {
     
 
     
-    func update(memo: MemoEntity?, content: String, Title: String) {
+    func update(memo: MemoEntity?, content: String, Title: String, insertDate: Date) {
         memo?.content = content
         memo?.title = Title
+        memo?.insertDate = Date.now
         saveContext()
     }
     func delete(memo: MemoEntity?) {
