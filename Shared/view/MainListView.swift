@@ -46,9 +46,9 @@ struct MainListView: View {
                             Button{
                                 showComposer = true
                             }label: {
-                                Image(systemName: "plus")
+                                Image(systemName: "square.and.pencil")
                                     .resizable()
-                                    .frame(width: 20, height: 20)
+                                    .frame(width: 26, height: 26)
                         }
                         
                     }
@@ -60,10 +60,15 @@ struct MainListView: View {
                         if keyword.isEmpty {
                             memoList.nsPredicate = nil
                         } else {
-                            memoList.nsPredicate = NSPredicate(format:
+                            let titlePredicate: NSPredicate = NSPredicate(format:
                                 "title CONTAINS[c] %@", newValue)
-                            memoList.nsPredicate = NSPredicate(format:
-                                "content CONTAINS[c] %@", newValue)
+                            let contentPredicate: NSPredicate = NSPredicate(format: "content CONTAINS[c] %@", newValue)
+                            memoList.nsPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [titlePredicate, contentPredicate])
+                            
+                            //memoList.nsPredicate = NSPredicate(format:
+                                //"title CONTAINS[c] %@", newValue)
+                            //memoList.nsPredicate = NSPredicate(format:
+                                //"content CONTAINS[c] %@", newValue)
                         }
                     }
             }
