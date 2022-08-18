@@ -62,13 +62,12 @@ struct MainListView: View {
                         } else {
                             let titlePredicate: NSPredicate = NSPredicate(format:
                                 "title CONTAINS[c] %@", newValue)
-                            let contentPredicate: NSPredicate = NSPredicate(format: "content CONTAINS[c] %@", newValue)
+                            let contentPredicate: NSPredicate = NSPredicate(format:
+                                "content CONTAINS[c] %@", newValue)
                             memoList.nsPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [titlePredicate, contentPredicate])
                             
-                            //memoList.nsPredicate = NSPredicate(format:
-                                //"title CONTAINS[c] %@", newValue)
-                            //memoList.nsPredicate = NSPredicate(format:
-                                //"content CONTAINS[c] %@", newValue)
+                            
+                           
                         }
                     }
             }
