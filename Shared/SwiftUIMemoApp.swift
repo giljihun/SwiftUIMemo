@@ -11,12 +11,14 @@ import SwiftUI
 struct SwiftUIMemoApp: App {
     let manager = CoreDataManager.shared
 
-
+    @StateObject var navigationState = NavigationState()
+    
     var body: some Scene {
         WindowGroup {
             MainListView()
                 .environment(\.managedObjectContext, manager.mainContext)
                 .environmentObject(manager)
+                .environmentObject(navigationState)
         }
     }
 }

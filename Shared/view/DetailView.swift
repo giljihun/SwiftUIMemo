@@ -11,11 +11,21 @@ struct DetailView: View {
     @ObservedObject var memo: MemoEntity
     
     @EnvironmentObject var manager: CoreDataManager
+    @EnvironmentObject var navigationState: NavigationState
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     @State private var showComposer = false
     @State private var showDeleteAlert = false
     
     @Environment(\.dismiss) var dismiss
+    
+    var placement: ToolbarItemPlacement {
+        if horizontalSizeClass == .regular {
+            return .primaryAction
+        } else {
+            return .bottomBar
+        }
+    }
     
     var body: some View {
         VStack{
@@ -43,7 +53,7 @@ struct DetailView: View {
         .navigationTitle("Look")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItemGroup(placement: .bottomBar) {
+            ToolbarItemGroup(placement: placement) {
                 
                 Button {
                     showDeleteAlert = true
@@ -55,6 +65,12 @@ struct DetailView: View {
                     Button(role: .destructive) {
                         manager.delete(memo: memo)
                         dismiss()
+                        
+                        if horizontalSizeClass == .regular {
+                            navigationState.listId = UUID()
+                        } else {
+                            dismiss()
+                        }
                     } label: {
                         Text("Delete")
                     }
