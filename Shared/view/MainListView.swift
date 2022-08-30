@@ -32,11 +32,12 @@ struct MainListView: View {
                 .onDelete(perform: delete)
             }
             .listStyle(PlainListStyle())
+            .navigationTitle("My Memo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        Text("   MEMOBICOM")
+                        Text("MEMOBICOM")
                             .font(.custom("Copperplate", size: 30))
                             .padding(.leading)
                             .frame(width: 500, height: 0.0)
@@ -74,7 +75,7 @@ struct MainListView: View {
             }
             
             VStack {
-                Text("내 메모를 탭한 다음 메모를 선택하거나\n새 메모를 추가할 수 있어요 :)")
+                Text("내 메모를 탭한 다음 메모를 선택하거나\n\n새 메모를 추가해보세요 ! \n :p")
                     .multilineTextAlignment(.center)
                     .font(.title3)
                 Button{
@@ -105,6 +106,7 @@ struct MainListView_Previews: PreviewProvider {
             .environment(\.managedObjectContext,
                           CoreDataManager.shared.mainContext)
             .environmentObject(NavigationState())
+            .previewInterfaceOrientation(.portrait)
     }
 }
 
