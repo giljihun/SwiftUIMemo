@@ -73,7 +73,6 @@ struct ComposeView: View {
                     }
                 }
             }
-                
         }
     }
 }

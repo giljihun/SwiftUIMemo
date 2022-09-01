@@ -10,9 +10,9 @@ import SwiftUI
 struct MainListView: View {
     @EnvironmentObject var manager: CoreDataManager
     @EnvironmentObject var navigationState: NavigationState
-    
     @State private var showComposer: Bool = false
-    @FetchRequest(sortDescriptors: [SortDescriptor(\MemoEntity.insertDate, order: .reverse)]) //fechrequest 특성은 항상 뷰 안에서 실행해야된다.
+    @FetchRequest(sortDescriptors: [SortDescriptor(\MemoEntity.insertDate, order: .reverse)])
+    
     var memoList: FetchedResults<MemoEntity>
     
     @State private var keyword = ""
@@ -44,7 +44,6 @@ struct MainListView: View {
                     }
                 }
             }
-            
             .toolbar {
                 Button{
                     showComposer = true
@@ -68,9 +67,6 @@ struct MainListView: View {
                     let contentPredicate: NSPredicate = NSPredicate(format:
                                                                         "content CONTAINS[c] %@", newValue)
                     memoList.nsPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [titlePredicate, contentPredicate])
-                    
-                    
-                    
                 }
             }
             
@@ -109,6 +105,3 @@ struct MainListView_Previews: PreviewProvider {
             .previewInterfaceOrientation(.portrait)
     }
 }
-
-
-                            	

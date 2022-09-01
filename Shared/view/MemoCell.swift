@@ -39,6 +39,3 @@ struct MemoCell_Previews: PreviewProvider {
                                     CoreDataManager.shared.mainContext))
     }
 }
-
-
-
