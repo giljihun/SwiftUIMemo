@@ -85,6 +85,7 @@ struct MainListView: View {
         }
         #if os(iOS)
         .id(navigationState.listId)
+        //뷰에 아이디를 추가, 아이디가 바뀌면 뷰 전체를 다시 그림
         #endif
         }
     

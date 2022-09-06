@@ -30,7 +30,7 @@ struct SwiftUIMemoApp: App {
             case .background:
                 print("App is background")
             @unknown default:
-                print("Oh - interesting: I received an unexpected new value.")
+                print("I received an unexpected thing.")
             }
         }
     }
