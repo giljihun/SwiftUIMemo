@@ -11,9 +11,9 @@ struct MainListView: View {
     @EnvironmentObject var manager: CoreDataManager
     @EnvironmentObject var navigationState: NavigationState
     @State private var showComposer: Bool = false
+    @Binding var showMenu: Bool
     
     @FetchRequest(sortDescriptors: [SortDescriptor(\MemoEntity.insertDate, order: .reverse)])
-    
     
     var memoList: FetchedResults<MemoEntity>
     
@@ -37,13 +37,24 @@ struct MainListView: View {
             .navigationTitle("My Memo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        sortByDateDesc.toggle()
-                    } label: {
-                        Image(systemName:  "arrow.up.arrow.down")
+                //ToolbarItem(placement: //.navigationBarLeading) {
+                    //Button {
+                        //sortByDateDesc.toggle()
+                    //} label: {
+                       // Image(systemName:  "arrow.up.arrow.down")
+                   // }
+                //}
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            withAnimation {
+                            self.showMenu = true
+                            }
+                        }) {
+                            Image(systemName: "text.justify")
+                        }
                     }
-                }
+                
+                
                     ToolbarItem(placement: .principal) {
                         VStack {
                             Text("MEMOBICOM")
@@ -116,8 +127,9 @@ struct MainListView: View {
 }
 
 struct MainListView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        MainListView()
+        MainListView(showMenu: .constant(false))
             .environmentObject(CoreDataManager.shared)
             .environment(\.managedObjectContext,
                           CoreDataManager.shared.mainContext)

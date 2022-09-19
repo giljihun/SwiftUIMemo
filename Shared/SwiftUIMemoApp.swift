@@ -16,7 +16,7 @@ struct SwiftUIMemoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainListView()
+            ContentView()
                 .environment(\.managedObjectContext, manager.mainContext)
                 .environmentObject(manager)
                 .environmentObject(navigationState)

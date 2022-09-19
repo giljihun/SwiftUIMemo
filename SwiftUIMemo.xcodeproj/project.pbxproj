@@ -17,6 +17,10 @@
 		F2663FC9289F8506008BA358 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2663FC7289F8506008BA358 /* CoreDataManager.swift */; };
 		F278CEF328BC634D00B958A8 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F278CEF228BC634D00B958A8 /* NavigationState.swift */; };
 		F278CEF428BC634D00B958A8 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F278CEF228BC634D00B958A8 /* NavigationState.swift */; };
+		F2A652EA28D83E6C0070E645 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A652E928D83E6C0070E645 /* MenuView.swift */; };
+		F2A652EB28D83E6C0070E645 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A652E928D83E6C0070E645 /* MenuView.swift */; };
+		F2A652ED28D84DC20070E645 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A652EC28D84DC20070E645 /* ContentView.swift */; };
+		F2A652EE28D84DC20070E645 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A652EC28D84DC20070E645 /* ContentView.swift */; };
 		F2D0B8BA287030400093ACE8 /* SwiftUIMemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2D0B8A72870303F0093ACE8 /* SwiftUIMemo.xcdatamodeld */; };
 		F2D0B8BB287030400093ACE8 /* SwiftUIMemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2D0B8A72870303F0093ACE8 /* SwiftUIMemo.xcdatamodeld */; };
 		F2D0B8BC287030400093ACE8 /* SwiftUIMemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D0B8A92870303F0093ACE8 /* SwiftUIMemoApp.swift */; };
@@ -37,6 +41,8 @@
 		F207623E287945BC0021948A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		F2663FC7289F8506008BA358 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F278CEF228BC634D00B958A8 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
+		F2A652E928D83E6C0070E645 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		F2A652EC28D84DC20070E645 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F2D0B8A82870303F0093ACE8 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		F2D0B8A92870303F0093ACE8 /* SwiftUIMemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIMemoApp.swift; sourceTree = "<group>"; };
 		F2D0B8AC287030400093ACE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,10 +75,12 @@
 		F20762222871808E0021948A /* view */ = {
 			isa = PBXGroup;
 			children = (
-				F2D0B8CC287031220093ACE8 /* MainListView.swift */,
 				F2076223287180A00021948A /* MemoCell.swift */,
 				F207623B2876D2A30021948A /* ComposeView.swift */,
 				F207623E287945BC0021948A /* DetailView.swift */,
+				F2D0B8CC287031220093ACE8 /* MainListView.swift */,
+				F2A652EC28D84DC20070E645 /* ContentView.swift */,
+				F2A652E928D83E6C0070E645 /* MenuView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -234,11 +242,13 @@
 			files = (
 				F2076224287180A00021948A /* MemoCell.swift in Sources */,
 				F207623F287945BC0021948A /* DetailView.swift in Sources */,
+				F2A652ED28D84DC20070E645 /* ContentView.swift in Sources */,
 				F2D0B8BA287030400093ACE8 /* SwiftUIMemo.xcdatamodeld in Sources */,
 				F2E61B9928713E05009B8FF6 /* MemoStore.swift in Sources */,
 				F2D0B8CD287031220093ACE8 /* MainListView.swift in Sources */,
 				F207623C2876D2A30021948A /* ComposeView.swift in Sources */,
 				F2D0B8BC287030400093ACE8 /* SwiftUIMemoApp.swift in Sources */,
+				F2A652EA28D83E6C0070E645 /* MenuView.swift in Sources */,
 				F2E61B9628713CB6009B8FF6 /* Memo.swift in Sources */,
 				F2663FC8289F8506008BA358 /* CoreDataManager.swift in Sources */,
 				F278CEF328BC634D00B958A8 /* NavigationState.swift in Sources */,
@@ -251,11 +261,13 @@
 			files = (
 				F2076225287180A00021948A /* MemoCell.swift in Sources */,
 				F2076240287945BC0021948A /* DetailView.swift in Sources */,
+				F2A652EE28D84DC20070E645 /* ContentView.swift in Sources */,
 				F2D0B8BB287030400093ACE8 /* SwiftUIMemo.xcdatamodeld in Sources */,
 				F2E61B9A28713E05009B8FF6 /* MemoStore.swift in Sources */,
 				F2D0B8CE287031220093ACE8 /* MainListView.swift in Sources */,
 				F207623D2876D2A30021948A /* ComposeView.swift in Sources */,
 				F2D0B8BD287030400093ACE8 /* SwiftUIMemoApp.swift in Sources */,
+				F2A652EB28D83E6C0070E645 /* MenuView.swift in Sources */,
 				F2E61B9728713CB6009B8FF6 /* Memo.swift in Sources */,
 				F2663FC9289F8506008BA358 /* CoreDataManager.swift in Sources */,
 				F278CEF428BC634D00B958A8 /* NavigationState.swift in Sources */,
