@@ -11,12 +11,14 @@ struct MainListView: View {
     @EnvironmentObject var manager: CoreDataManager
     @EnvironmentObject var navigationState: NavigationState
     @State private var showComposer: Bool = false
+    
     @FetchRequest(sortDescriptors: [SortDescriptor(\MemoEntity.insertDate, order: .reverse)])
+    
     
     var memoList: FetchedResults<MemoEntity>
     
     @State private var keyword = ""
-    
+    @State private var sortByDateDesc = true
     
     var body: some View {
         
@@ -35,25 +37,32 @@ struct MainListView: View {
             .navigationTitle("My Memo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text("MEMOBICOM")
-                            .font(.custom("Copperplate", size: 30))
-                            .padding(.leading)
-                            .frame(width: 500, height: 0.0)
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        sortByDateDesc.toggle()
+                    } label: {
+                        Image(systemName:  "arrow.up.arrow.down")
                     }
                 }
-            }
-            .toolbar {
-                Button{
-                    showComposer = true
-                }label: {
-                    Image(systemName: "square.and.pencil")
-                        .resizable()
-                        .frame(width: 26, height: 26)
-                }
+                    ToolbarItem(placement: .principal) {
+                        VStack {
+                            Text("MEMOBICOM")
+                                .font(.custom("Copperplate", size: 30))
+                                .padding()
+                                .frame(width: 500, height: 0.0)
+                        }
+                    }
                 
-            }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button{
+                        showComposer = true
+                    }label: {
+                        Image(systemName: "square.and.pencil")
+                            .resizable()
+                            .frame(width: 26, height: 26)
+                        }
+                    }
+                }
             .sheet(isPresented: $showComposer) {
                 ComposeView()
             }
@@ -67,6 +76,16 @@ struct MainListView: View {
                     let contentPredicate: NSPredicate = NSPredicate(format:
                                                                         "content CONTAINS[c] %@", newValue)
                     memoList.nsPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [titlePredicate, contentPredicate])
+                }
+            }
+            .onChange(of: sortByDateDesc) { desc in
+                if desc {
+                    memoList.sortDescriptors = [
+                        SortDescriptor(\.insertDate, order: .reverse)
+                    ]
+                } else {
+                    memoList.sortDescriptors = [
+                        SortDescriptor(\.insertDate, order: .forward)]
                 }
             }
             
