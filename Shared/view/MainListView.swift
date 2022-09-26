@@ -46,10 +46,12 @@ struct MainListView: View {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
                             withAnimation {
-                            self.showMenu = true
+                                self.showMenu = true
                             }
                         }) {
-                            Image(systemName: "line.horizontal.3")
+                            Image(systemName: "list.bullet.circle.fill")
+                                .resizable()
+                                .frame(width: 35, height: 35)
                         }
                     }
                 
@@ -68,7 +70,7 @@ struct MainListView: View {
                         }label: {
                             Image(systemName: "square.and.pencil")
                                 .resizable()
-                                .frame(width: 26, height: 26)
+                                .frame(width: 30, height: 30)
                             }
                         }
                 }

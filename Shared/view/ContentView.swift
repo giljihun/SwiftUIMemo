@@ -29,7 +29,7 @@ struct ContentView: View {
                                     .disabled(self.showMenu ? true : false)
 
                                 if self.showMenu {
-                                    MenuView()
+                                    MenuView(showMenu: self.$showMenu)
                                         .frame(width: geometry.size.width/2)
                                 }
                             }
