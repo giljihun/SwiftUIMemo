@@ -75,12 +75,12 @@
 		F20762222871808E0021948A /* view */ = {
 			isa = PBXGroup;
 			children = (
-				F2076223287180A00021948A /* MemoCell.swift */,
-				F207623B2876D2A30021948A /* ComposeView.swift */,
-				F207623E287945BC0021948A /* DetailView.swift */,
 				F2D0B8CC287031220093ACE8 /* MainListView.swift */,
 				F2A652EC28D84DC20070E645 /* ContentView.swift */,
 				F2A652E928D83E6C0070E645 /* MenuView.swift */,
+				F2076223287180A00021948A /* MemoCell.swift */,
+				F207623B2876D2A30021948A /* ComposeView.swift */,
+				F207623E287945BC0021948A /* DetailView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";

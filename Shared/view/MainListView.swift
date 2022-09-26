@@ -34,7 +34,6 @@ struct MainListView: View {
                 .onDelete(perform: delete)
             }
             .listStyle(PlainListStyle())
-            .navigationTitle("My Memo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 //ToolbarItem(placement: //.navigationBarLeading) {
@@ -50,10 +49,9 @@ struct MainListView: View {
                             self.showMenu = true
                             }
                         }) {
-                            Image(systemName: "text.justify")
+                            Image(systemName: "line.horizontal.3")
                         }
                     }
-                
                 
                     ToolbarItem(placement: .principal) {
                         VStack {
@@ -64,41 +62,41 @@ struct MainListView: View {
                         }
                     }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button{
-                        showComposer = true
-                    }label: {
-                        Image(systemName: "square.and.pencil")
-                            .resizable()
-                            .frame(width: 26, height: 26)
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button{
+                            showComposer = true
+                        }label: {
+                            Image(systemName: "square.and.pencil")
+                                .resizable()
+                                .frame(width: 26, height: 26)
+                            }
                         }
+                }
+                .sheet(isPresented: $showComposer) {
+                    ComposeView()
+                }
+                .searchable(text: $keyword, prompt: "Search")
+                .onChange(of: keyword) { newValue in
+                    if keyword.isEmpty {
+                        memoList.nsPredicate = nil
+                    } else {
+                        let titlePredicate: NSPredicate = NSPredicate(format:
+                                                                        "title CONTAINS[c] %@", newValue)
+                        let contentPredicate: NSPredicate = NSPredicate(format:
+                                                                            "content CONTAINS[c] %@", newValue)
+                        memoList.nsPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [titlePredicate, contentPredicate])
                     }
                 }
-            .sheet(isPresented: $showComposer) {
-                ComposeView()
-            }
-            .searchable(text: $keyword, prompt: "Search")
-            .onChange(of: keyword) { newValue in
-                if keyword.isEmpty {
-                    memoList.nsPredicate = nil
-                } else {
-                    let titlePredicate: NSPredicate = NSPredicate(format:
-                                                                    "title CONTAINS[c] %@", newValue)
-                    let contentPredicate: NSPredicate = NSPredicate(format:
-                                                                        "content CONTAINS[c] %@", newValue)
-                    memoList.nsPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [titlePredicate, contentPredicate])
+                .onChange(of: sortByDateDesc) { desc in
+                    if desc {
+                        memoList.sortDescriptors = [
+                            SortDescriptor(\.insertDate, order: .reverse)
+                        ]
+                    } else {
+                        memoList.sortDescriptors = [
+                            SortDescriptor(\.insertDate, order: .forward)]
+                    }
                 }
-            }
-            .onChange(of: sortByDateDesc) { desc in
-                if desc {
-                    memoList.sortDescriptors = [
-                        SortDescriptor(\.insertDate, order: .reverse)
-                    ]
-                } else {
-                    memoList.sortDescriptors = [
-                        SortDescriptor(\.insertDate, order: .forward)]
-                }
-            }
             
             VStack {
                 Text("내 메모를 탭한 다음 메모를 선택하거나\n\n새 메모를 추가해보세요 ! \n :p")
@@ -129,7 +127,7 @@ struct MainListView: View {
 struct MainListView_Previews: PreviewProvider {
     
     static var previews: some View {
-        MainListView(showMenu: .constant(false))
+        MainListView(showMenu: .constant(true))
             .environmentObject(CoreDataManager.shared)
             .environment(\.managedObjectContext,
                           CoreDataManager.shared.mainContext)
