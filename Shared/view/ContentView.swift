@@ -9,13 +9,15 @@ import SwiftUI
 struct ContentView: View {
     
     @State var showMenu = false
+    @Binding var showComposer: Bool
+    @Binding var sortByDateDesc : Bool
     
     var body: some View {
         
         let drag = DragGesture()
             .onEnded {
                 if $0.translation.width < -100 {
-                    withAnimation {
+                    withAnimation(.spring()) {
                         self.showMenu = false
                     }
                 }
@@ -23,14 +25,17 @@ struct ContentView: View {
         return
             GeometryReader { geometry in
                             ZStack(alignment: .leading) {
-                                MainListView(showMenu: self.$showMenu)
+                                MainListView(showComposer: self.$showComposer, showMenu: self.$showMenu, sortByDateDesc: self.$sortByDateDesc)
                                     .frame(width: geometry.size.width, height: geometry.size.height)
-                                    .offset(x: self.showMenu ? geometry.size.width/2 : 0)
+                                    .offset(x: self.showMenu ? geometry.size.width/2.6 : 0)
                                     .disabled(self.showMenu ? true : false)
+                                    
+                                    
 
                                 if self.showMenu {
-                                    MenuView(showMenu: self.$showMenu)
-                                        .frame(width: geometry.size.width/2)
+                                    MenuView(showMenu: self.$showMenu, showComposer: self.$showComposer, sortByDateDesc: self.$sortByDateDesc)
+                                        .frame(width: geometry.size.width/2.6)
+                                    
                                 }
                             }
                             .gesture(drag)

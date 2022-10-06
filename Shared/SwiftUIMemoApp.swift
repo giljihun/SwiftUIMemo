@@ -9,14 +9,17 @@ import SwiftUI
 
 @main // 앱의 시작점인 Entry Points를 지정하는 것
 struct SwiftUIMemoApp: App {
+    
     let manager = CoreDataManager.shared
-
     @StateObject var navigationState = NavigationState()
     @Environment(\.scenePhase) var scenePhase
+    @State private var showComposer: Bool = false
+    @State private var sortByDateDesc: Bool = false
+    
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(showComposer: self.$showComposer, sortByDateDesc: self.$sortByDateDesc)
                 .environment(\.managedObjectContext, manager.mainContext)
                 .environmentObject(manager)
                 .environmentObject(navigationState)
