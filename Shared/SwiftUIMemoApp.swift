@@ -6,9 +6,17 @@
 //
 
 import SwiftUI
+import FirebaseCore
+
 
 @main // 앱의 시작점인 Entry Points를 지정하는 것
 struct SwiftUIMemoApp: App {
+    
+    @StateObject var firestoreManager = FireStoreManager()
+    
+    init() {
+        FirebaseApp.configure()
+    }
     
     let manager = CoreDataManager.shared
     @StateObject var navigationState = NavigationState()
@@ -23,6 +31,7 @@ struct SwiftUIMemoApp: App {
                 .environment(\.managedObjectContext, manager.mainContext)
                 .environmentObject(manager)
                 .environmentObject(navigationState)
+                .environmentObject(firestoreManager)
         }.onChange(of: scenePhase) {
             newScenePhase in
             switch newScenePhase {

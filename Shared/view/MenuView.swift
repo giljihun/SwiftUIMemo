@@ -26,6 +26,11 @@ struct MenuView: View {
                             Image(systemName: "square.and.pencil")
                                 .resizable()
                                 .frame(width: 30, height: 30)
+                            Text("새 메모")
+                                .font(.title3)
+                                .foregroundColor(.accentColor)
+                                .bold()
+                                
                         }
                     }
                     .padding(.top, 30)
@@ -33,7 +38,7 @@ struct MenuView: View {
                         Button(action: {
                             print("Hello")
                         }, label: {
-                            Text("gil")
+                            Text("공사중")
                         })
                     }
                     .padding(.top, 30)
@@ -41,10 +46,28 @@ struct MenuView: View {
                         Button(action: {
                             print("Hello")
                         }, label: {
-                            Text("gil")
+                            Text("공사중")
                         })
                     }
                     .padding(.top, 30)
+                    HStack {
+                        Button(action: {
+                            print("Hello")
+                        }, label: {
+                            Text("공사중")
+                        })
+                    }
+                    .padding(.top, 30)
+                    HStack {
+                        Button(action: {
+                            print("Hello")
+                        }, label: {
+                            Text("공사중")
+                        })
+                    }
+                    .padding(.top, 30)
+
+
                     Spacer()
                 }
                 .toolbar {

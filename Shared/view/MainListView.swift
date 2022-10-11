@@ -58,25 +58,6 @@ struct MainListView: View {
                         }
                     }
                 
-                    
-                
-//                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        Button{
-//                            showComposer = true
-//                        }label: {
-//                            Image(systemName: "square.and.pencil")
-//                                .resizable()
-//                                .frame(width: 30, height: 30)
-//                            }
-//                        }
-//                ToolbarItem(placement: .principal) {
-//                    VStack {
-//                        Text("MEMOBICOM")
-//                            .font(.custom("Copperplate", size: 30))
-//                            .padding()
-//                            .frame(width: 500, height: 0.0)
-//                    }
-//                } // "MEMOBICOM" 제목 설정
                 ToolbarItem(placement: .principal) {
                     VStack {
                         Image("MEMObicom")
