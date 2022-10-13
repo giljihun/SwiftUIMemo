@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "776C7975-AE4D-4BFD-BB2E-5E2E62E2D1D4"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "05452AB6-67C1-40BE-AE21-93CF64C0F1FB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/view/MainListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C492BD4-7AC9-435E-BDE7-9E1DA9F232C8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/view/MainListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "memoList"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "1C492BD4-7AC9-435E-BDE7-9E1DA9F232C8 - 2eb9da854399e200"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of SwiftUIMemo.MainListView.keyword : Swift.String"
+                  moduleName = "SwiftUIMemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mobicom/Desktop/SWIFTs/SwiftUIMemo/Shared/view/MainListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "1C492BD4-7AC9-435E-BDE7-9E1DA9F232C8 - 126ac089d5f9ac6d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUIMemo.MainListView.init(manager: SwiftUI.EnvironmentObject&lt;SwiftUIMemo.CoreDataManager&gt;, memoList: SwiftUI.FetchRequest&lt;SwiftUIMemo.MemoEntity&gt;) -&gt; SwiftUIMemo.MainListView"
+                  moduleName = "SwiftUIMemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mobicom/Desktop/SWIFTs/SwiftUIMemo/Shared/view/MainListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "184">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
